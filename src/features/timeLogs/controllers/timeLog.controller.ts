@@ -18,11 +18,15 @@ class TimeLogsController implements Controller {
   }
 
   async addTimeLog(req: Request, res: Response) {
-    const AddTimeLogtDTO = req.body;
+    const addTimeLogDTO: AddTimeLogDTO = req.body;
 
-    console.log(AddTimeLogtDTO);
+    if (addTimeLogDTO.startTime <= addTimeLogDTO.endTime) {
+      return res
+        .status(400)
+        .json({ error: { message: 'endTime must be greater than startTime' } });
+    }
 
-    await TimeLogService.addTimeLog(AddTimeLogtDTO);
+    await TimeLogService.addTimeLog(addTimeLogDTO);
 
     res.sendStatus(201);
   }
