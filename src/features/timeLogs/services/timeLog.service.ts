@@ -1,3 +1,5 @@
+import AddTimeLogtDTO from '../dtos/addTimeLog';
+
 export default class TimeLogService {
-  static addTimeLog = async () => {};
+  static addTimeLog = async (timeLogDTO: AddTimeLogtDTO) => {};
 }
