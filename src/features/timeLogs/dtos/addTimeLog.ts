@@ -5,7 +5,7 @@ class AddTimeLogDTO {
   startTime: Date;
 
   @IsDate()
-  endTime: number;
+  endTime: Date;
 
   @IsString()
   description: string;

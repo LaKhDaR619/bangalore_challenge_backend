@@ -21,6 +21,8 @@ class TimeLogsController implements Controller {
     const { AddTimeLogtDTO } = req.body;
 
     await TimeLogService.addTimeLog(AddTimeLogtDTO);
+
+    res.sendStatus(201);
   }
 }
 export default TimeLogsController;
