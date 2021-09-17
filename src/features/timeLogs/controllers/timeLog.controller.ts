@@ -20,7 +20,7 @@ class TimeLogsController implements Controller {
 
   async getAllTimeLogs(req: Request, res: Response) {
     const take = req.query.take || '10';
-    const skip = req.query.take || '0';
+    const skip = req.query.skip || '0';
 
     const result = await TimeLogService.getAllTimeLogs(
       Number.parseInt(take as string),
