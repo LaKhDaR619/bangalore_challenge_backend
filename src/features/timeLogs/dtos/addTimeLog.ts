@@ -1,10 +1,10 @@
-import { IsNumber, IsString, IsDate } from 'class-validator';
+import { IsString, IsDateString, MinDate } from 'class-validator';
 
 class AddTimeLogDTO {
-  @IsDate()
+  @IsDateString()
   startTime: Date;
 
-  @IsDate()
+  @IsDateString()
   endTime: Date;
 
   @IsString()

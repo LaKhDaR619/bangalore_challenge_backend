@@ -18,7 +18,9 @@ class TimeLogsController implements Controller {
   }
 
   async addTimeLog(req: Request, res: Response) {
-    const { AddTimeLogtDTO } = req.body;
+    const AddTimeLogtDTO = req.body;
+
+    console.log(AddTimeLogtDTO);
 
     await TimeLogService.addTimeLog(AddTimeLogtDTO);
 
