@@ -12,9 +12,6 @@ export default class TimeLogService {
     const nextCursor =
       parseInt(skip.toString(), 10) + parseInt(take.toString(), 10);
 
-    console.log(take);
-    console.log(skip);
-
     return {
       total,
       data: timeLogs,
