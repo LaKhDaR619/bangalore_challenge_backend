@@ -4,7 +4,12 @@ import TimeLog from '../models/timeLog.model';
 export default class TimeLogService {
   static getAllTimeLogs = async (take: number, skip: number) => {
     const [timeLogs, total] = await TimeLog.createQueryBuilder('timeLog')
-      .select(['timeLog.id', 'timeLog.startTime', 'timeLog.endTime'])
+      .select([
+        'timeLog.id',
+        'timeLog.startTime',
+        'timeLog.endTime',
+        'timeLog.description',
+      ])
       .take(take)
       .skip(skip)
       .getManyAndCount();
