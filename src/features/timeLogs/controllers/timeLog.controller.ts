@@ -1,5 +1,7 @@
 import { Request, Response, Router } from 'express';
+import validationMiddleware from '../../../middlewares/dataValidator';
 import Controller from '../../../shared/interfaces/controller.interface';
+import AddTimeLogDTO from '../dtos/addTimeLog';
 import TimeLogService from '../services/timeLog.service';
 
 class TimeLogsController implements Controller {
@@ -12,7 +14,7 @@ class TimeLogsController implements Controller {
   }
 
   initializeRoutes(): void {
-    this.route.post('/', this.addTimeLog);
+    this.route.post('/', validationMiddleware(AddTimeLogDTO), this.addTimeLog);
   }
 
   async addTimeLog(req: Request, res: Response) {

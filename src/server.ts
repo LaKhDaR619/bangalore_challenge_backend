@@ -3,6 +3,7 @@ import connectDB from './config/dbConfig';
 import errorHandler from './middlewares/errorHandler';
 
 import dotenv from 'dotenv';
+import initRoutes from './init/init.routes';
 dotenv.config();
 
 const PORT = process.env.SERVER_PORT;
@@ -23,6 +24,9 @@ const setUp = async () => {
     console.error('Error Connecting To Database', err);
   }
 
+  app.use(express.json());
+
+  initRoutes(app);
   app.use(errorHandler);
 
   app.listen(PORT, () => console.log(`listening on PORT: ${PORT}`));

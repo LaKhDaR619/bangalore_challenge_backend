@@ -1,6 +1,6 @@
 import { IsNumber, IsString, IsDate } from 'class-validator';
 
-class AddAppointmentDTO {
+class AddTimeLogDTO {
   @IsDate()
   startTime: Date;
 
@@ -11,4 +11,4 @@ class AddAppointmentDTO {
   description: string;
 }
 
-export default AddAppointmentDTO;
+export default AddTimeLogDTO;
