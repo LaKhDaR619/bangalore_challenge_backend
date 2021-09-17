@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Request, Response, Router } from 'express';
 import Controller from '../../../shared/interfaces/controller.interface';
 
 class TimeLogsController implements Controller {
@@ -10,6 +10,10 @@ class TimeLogsController implements Controller {
     this.initializeRoutes();
   }
 
-  initializeRoutes(): void {}
+  initializeRoutes(): void {
+    this.route.post('/', this.addTimeLog);
+  }
+
+  async addTimeLog(req: Request, res: Response) {}
 }
 export default TimeLogsController;
