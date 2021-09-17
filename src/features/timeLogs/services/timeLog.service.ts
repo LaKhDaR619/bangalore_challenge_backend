@@ -9,8 +9,7 @@ export default class TimeLogService {
       .skip(skip)
       .getManyAndCount();
 
-    const nextCursor =
-      parseInt(skip.toString(), 10) + parseInt(take.toString(), 10);
+    const nextCursor = skip + take;
 
     return {
       total,
