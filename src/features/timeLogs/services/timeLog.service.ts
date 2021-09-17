@@ -2,6 +2,22 @@ import AddTimeLogtDTO from '../dtos/addTimeLog';
 import TimeLog from '../models/timeLog.model';
 
 export default class TimeLogService {
+  static getAllTimeLogs = async (take: number, skip: number) => {
+    const [timeLogs, total] = await TimeLog.createQueryBuilder('timeLog')
+      .select(['timeLog.id', 'timeLog.startTime', 'timeLog.endTime'])
+      .take(take)
+      .skip(skip)
+      .getManyAndCount();
+
+    const nextCursor = parseInt(skip.toString()) + parseInt(take.toString());
+
+    return {
+      total,
+      data: timeLogs,
+      nextCursor,
+    };
+  };
+
   static addTimeLog = async (addTimeLogDTO: AddTimeLogtDTO) => {
     const newTimeLog = new TimeLog();
 

@@ -14,7 +14,19 @@ class TimeLogsController implements Controller {
   }
 
   initializeRoutes(): void {
+    this.route.get('/', this.getAllTimeLogs);
     this.route.post('/', validationMiddleware(AddTimeLogDTO), this.addTimeLog);
+  }
+
+  async getAllTimeLogs(req: Request, res: Response) {
+    const take = req.query.take || '10';
+    const skip = req.query.take || '0';
+
+    const result = await TimeLogService.getAllTimeLogs(
+      Number.parseInt(take as string),
+      Number.parseInt(skip as string),
+    );
+    res.json(result);
   }
 
   async addTimeLog(req: Request, res: Response) {
@@ -27,7 +39,6 @@ class TimeLogsController implements Controller {
     }
 
     await TimeLogService.addTimeLog(addTimeLogDTO);
-
     res.sendStatus(201);
   }
 }

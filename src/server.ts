@@ -29,6 +29,10 @@ const setUp = async () => {
   initRoutes(app);
   app.use(errorHandler);
 
+  process.on('unhandledRejection', (reason, p) => {
+    console.error('Unhandled Rejection at:', p, 'reason:', reason);
+  });
+
   app.listen(PORT, () => console.log(`listening on PORT: ${PORT}`));
 };
 
