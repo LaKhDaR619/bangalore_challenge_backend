@@ -1,8 +1,8 @@
-import { createConnection, Connection } from "typeorm";
+import { createConnection, Connection } from 'typeorm';
 
 const connectDB = (): Promise<Connection> =>
   createConnection({
-    type: "postgres",
+    type: 'postgres',
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
     username: process.env.DB_USER,
@@ -11,9 +11,9 @@ const connectDB = (): Promise<Connection> =>
     entities: [`${__dirname}/../../**/**/*.model{.ts,.js}`],
     synchronize: false,
     cli: {
-      migrationsDir: "src/db/migrations",
+      migrationsDir: 'src/db/migrations',
     },
-    migrations: ["dist/db/migrations/*.js"],
+    migrations: ['dist/db/migrations/*.js'],
   });
 
 export default connectDB;
