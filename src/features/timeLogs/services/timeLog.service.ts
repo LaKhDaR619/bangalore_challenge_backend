@@ -12,6 +12,7 @@ export default class TimeLogService {
       ])
       .take(take)
       .skip(skip)
+      .orderBy('timeLog.startTime', 'DESC')
       .getManyAndCount();
 
     const nextCursor = skip + take;
