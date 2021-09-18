@@ -32,7 +32,7 @@ class TimeLogsController implements Controller {
   async addTimeLog(req: Request, res: Response) {
     const addTimeLogDTO: AddTimeLogDTO = req.body;
 
-    if (addTimeLogDTO.startTime <= addTimeLogDTO.endTime) {
+    if (addTimeLogDTO.startTime >= addTimeLogDTO.endTime) {
       return res
         .status(400)
         .json({ error: { message: 'endTime must be greater than startTime' } });
